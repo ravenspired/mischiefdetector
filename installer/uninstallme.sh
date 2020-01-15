@@ -1,0 +1,1 @@
+#This script uninstalls stuff from your computer
