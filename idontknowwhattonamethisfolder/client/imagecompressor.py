@@ -12,8 +12,10 @@ savetofile = savetofile.replace(".","_")
 savetofile = savetofile + ".png"
 
 print(savetofile)
-os.system("screencapture "+savetofile)
+os.system("screencapture "+savetofile+" -x")
 
 
 foo = Image.open(savetofile)
 print(foo.size)
+foo = foo.resize((43,24),Image.ANTIALIAS)
+foo.save(savetofile+".png",quality=95)
