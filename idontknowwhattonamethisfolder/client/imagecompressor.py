@@ -1,10 +1,11 @@
 import os
 import datetime
 from PIL import Image
+import os.path
+homedir = os.path.expanduser("~")
 
-
-
-savetofile = "~/mischief_detector/temp_scrnsht/"+str(datetime.datetime.now())
+print(homedir)
+savetofile = homedir+"/mischief_detector/temp_scrnsht/"+str(datetime.datetime.now())
 savetofile= savetofile.replace(" ", "_")
 savetofile= savetofile.replace(":", "_")
 savetofile = savetofile.replace(".","_")
@@ -15,4 +16,4 @@ os.system("screencapture "+savetofile)
 
 
 foo = Image.open(savetofile)
-print("image size is "+foo.size+", compressing...")
+print(foo.size)
