@@ -1,5 +1,7 @@
 import os
 import datetime
+from PIL import Image
+
 
 
 savetofile = "~/mischief_detector/temp_scrnsht/"+str(datetime.datetime.now())
@@ -10,3 +12,7 @@ savetofile = savetofile + ".png"
 
 print(savetofile)
 os.system("screencapture "+savetofile)
+
+
+foo = Image.open(savetofile)
+print("image size is "+foo.size+", compressing...")
