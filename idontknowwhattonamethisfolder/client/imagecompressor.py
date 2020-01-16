@@ -2,7 +2,11 @@ import os
 import datetime
 
 
-savetofile = "screencapture ~/Documents/mischief_detector/temp_scrnshot/"+str(datetime.datetime.now())+".png"
-savetofile.replace(" ", "_")
+savetofile = "~/mischief_detector/temp_scrnsht/"+str(datetime.datetime.now())
+savetofile= savetofile.replace(" ", "_")
+savetofile= savetofile.replace(":", "_")
+savetofile = savetofile.replace(".","_")
+savetofile = savetofile + ".png"
+
 print(savetofile)
-os.system(savetofile)
+os.system("screencapture "+savetofile)
