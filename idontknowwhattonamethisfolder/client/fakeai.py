@@ -1,9 +1,9 @@
 import random
 
+isAllowed = True
 
 if random.randint(1,2) == 1:
-	return True
+	isAllowed = True	
 else:
-	return False
-
+	isAllowed = False
 	
