@@ -19,3 +19,6 @@ foo = Image.open(savetofile)
 print(foo.size)
 foo = foo.resize((128,72),Image.ANTIALIAS)
 foo.save(savetofile+".png",quality=95)
+
+
+
