@@ -10,7 +10,7 @@
 Random Important Information::
 
 
-the images are compressed to a size of 128x72 with a quality of 95% (not important)
+the images are compressed to a size of 256x144 with a quality of 95% (not important)
 
 server login information:
 
