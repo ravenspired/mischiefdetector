@@ -10,7 +10,22 @@ model = Sequential([
 
 ])
 
-trainingDatagen = ImageDataGenerator(
-    featurewise_std_normalization=true,
-    
+intakeDatagenConfiguration = ImageDataGenerator(
+    zoom_range=0.2,
+    brightness_range=0.3,
+    channel_shift_range=0.3,
+    rescale=1./255
 )
+
+normalizDatagenConfiguration = ImageDataGenerator(
+    featurewise_center=True,
+    featurewise_std_normalization=True
+)
+
+trainingDatagenIntake = ImageDataGenerator(**intakeDatagenConfiguration)
+testingDatagenIntake  = ImageDataGenerator(**intakeDatagenConfiguration)
+trainingDatagenNorm = ImageDataGenerator(**normalizDatagenConfiguration)
+testingDatagenNorm  = ImageDataGenerator(**normalizDatagenConfiguration)
+
+trainingDatagenIntake.fit()
+testingDatagenNorm.fit()
