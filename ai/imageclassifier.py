@@ -36,12 +36,12 @@ testingDatagenNorm  = ImageDataGenerator(**normalizDatagenConfiguration)
 
 # Tell the intake data generators to take images
 # from the proper folders
-# TODO: 
+# TODO: Remove save_to_dir
 testingDatagenIntake.flow_from_directory(
-    "sorted_data/",
+    "sorted_data/monjan13",
     target_size=(256,144),
-    class_mode="binary",
-    save_to_dir="augmented_data"
+    class_mode="binary",    
+    save_to_dir="/Users/nwaterman2022/Documents/GitHub/mischiefdetector/augmented_data"
 )
 #trainingDatagenIntake
 
