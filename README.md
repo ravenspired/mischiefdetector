@@ -6,6 +6,14 @@
 - [ ] Create client program to securely take and process screenshots
 - [ ] Create server program to recieve alerts from clients and notify authorities (optional)
 
+dependencies:
+googlevoice
+keras
+tensorflow
+PIL
+Image
+maybe imagemagick
+
 
 Random Important Information::
 
