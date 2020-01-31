@@ -14,10 +14,16 @@ from keras.preprocessing.image import ImageDataGenerator
 # in the images and augment each individually, and thus
 # don't need to analyze the image set as a whole.
 intakeDatagenConfiguration = dict(
-    zoom_range=0.2,
-    brightness_range=[-0.3, 0.3],
-    channel_shift_range=0.3,
+    zoom_range=(0.6,1),
+    channel_shift_range=60,
     rescale=1./255
+)
+intakeDatagenFlowConfig = dict(
+    "sorted_data/monjan13",
+    target_size=(144,256),
+    class_mode="binary",
+    save_prefix="Intake",
+    save_to_dir="/Users/nwaterman2022/Documents/GitHub/mischiefdetector/augmented_data"
 )
 
 # Parameters for data generators which normalize the images,
@@ -37,18 +43,19 @@ testingDatagenNorm  = ImageDataGenerator(**normalizDatagenConfiguration)
 # Tell the intake data generators to take images
 # from the proper folders
 # TODO: Remove save_to_dir
-testingDatagenIntake.flow_from_directory(
+train_imgs, train_labels = trainingDatagenIntake.flow_from_directory(
     "sorted_data/monjan13",
-    target_size=(256,144),
-    class_mode="binary",    
+    target_size=(144,256),
+    class_mode="binary",
+    save_prefix="Intake",
     save_to_dir="/Users/nwaterman2022/Documents/GitHub/mischiefdetector/augmented_data"
 )
-#trainingDatagenIntake
+#testingDatagenIntake
 
 # Give the normalization data generators a look at the data
 # coming out of the intake data generators, so that they can
 # adjust (normalize) the data properly.
 # TODO: The training and testing data are normalized separately. Do we really want this?
-#trainingDatagenNorm.fit(trainingDatagenIntake)
+trainingDatagenNorm.fit(train_imgs)
 #testingDatagenNorm.fit(testingDatagenIntake)
 
