@@ -6,7 +6,9 @@ import smtplib
 from email.mime.multipart import MIMEMultipart 
 from email.mime.text import MIMEText 
 from email.mime.base import MIMEBase 
-from email import encoders 
+from email import encoders
+import os.path
+homedir = os.path.expanduser("~") 
 
 fromaddr = "mischiefservice@gmail.com"
 toaddr = "mischiefservice@gmail.com"
@@ -31,7 +33,7 @@ msg.attach(MIMEText(body, 'plain'))
 
 # open the file to be sent 
 filename = "violation.png"
-attachment = open("~/mischief_detector/temp_scrnsht/2020-01-30_10_33_54_762429.png", "rb") 
+attachment = open(homedir+"/mischief_detector/temp_scrnsht/2020-01-30_10_33_54_762429.png", "rb") 
 
 # instance of MIMEBase and named as p 
 p = MIMEBase('application', 'octet-stream') 
