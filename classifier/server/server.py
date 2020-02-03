@@ -31,7 +31,7 @@ msg.attach(MIMEText(body, 'plain'))
 
 # open the file to be sent 
 filename = "violation.png"
-attachment = open("/Users/avoronov2022/mischief_detector/temp_scrnsht/2020-01-30_10_33_54_762429.png", "rb") 
+attachment = open("~/mischief_detector/temp_scrnsht/2020-01-30_10_33_54_762429.png", "rb") 
 
 # instance of MIMEBase and named as p 
 p = MIMEBase('application', 'octet-stream') 
