@@ -8,5 +8,9 @@ mkdir ~/mischief_detector/temp_scrnsht
 mkdir ~/mischief_detector/unacceptable_scrnsht
 touch ~/mischief_detector/mischief.log
 
+curl https://raw.githubusercontent.com/ravenspired/mischiefdetector/master/classifier/client/imagecompressor.py --output ~/mischief_detector/imagecompressor.py
+
+
+
 echo "Installation completed."
 
