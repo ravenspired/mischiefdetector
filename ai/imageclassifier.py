@@ -31,10 +31,12 @@ normalizDatagenConfiguration = dict(
 )
 
 # Creating the data generators from the configurations above.
+print("<> Configuring Data-Generators")
 trainingDatagenIntake = ImageDataGenerator(**intakeDatagenConfiguration)
 testingDatagenIntake  = ImageDataGenerator(**intakeDatagenConfiguration)
 trainingDatagenNorm = ImageDataGenerator(**normalizDatagenConfiguration)
 testingDatagenNorm  = ImageDataGenerator(**normalizDatagenConfiguration)
+print(">< Done Configuring Data-Generators")
 
 # Tell the intake data generators to take images
 # from the proper folders
@@ -43,21 +45,32 @@ testingDatagenNorm  = ImageDataGenerator(**normalizDatagenConfiguration)
 #testingIntakeIterator = testingDatagenIntake.flow_from_directory("")
 
 # Tell the normalization datagens to take images from the intake datagens
-# TODO: Finish this
-trainingNormIterator = trainingDatagenNorm.flow(trainingIntakeIterator, save_prefix="Norm", save_to_dir="augmented_data")
+# TODO: Also move into larger statements, not saved to variables.
+#trainingNormIterator = trainingDatagenNorm.flow(trainingIntakeIterator, save_prefix="Norm", save_to_dir="augmented_data")
 #testingNormIterator = 
 
 # Give the normalization data generators a look at the data
 # coming out of the intake data generators, so that they can
 # adjust (normalize) the data properly.
 # TODO: The training and testing data are normalized separately. Do we really want this?
+print("<> Fitting Normalization Data-Generator")
 trainingDatagenNorm.fit(
     trainingDatagenIntake.flow_from_directory(
         "sorted_data/",
         **intakeDatagenFlowConfig
     )
 )
+print(">< Done Fitting Normalization Data-Generator")
 #testingDatagenNorm.fit(testingIntakeIterator)
 
-# TODO: Delete this
-dumpingintothisvar = trainingNormIterator()
+# TODO: Delete this, or move into the input for fitting the model – this is just to test.
+print("<> Testing Normalization Datagen")
+dumpingintothisvar = trainingDatagenNorm.flow(
+    trainingDatagenIntake.flow_from_directory(
+        "sorted_data/",
+        **intakeDatagenFlowConfig
+    ),
+    save_prefix="Norm",
+    save_to_dir="augmented_data"
+)
+print(">< Done Testing Normalization Datagen")
