@@ -11,12 +11,7 @@ from keras.preprocessing.image import ImageDataGenerator
 #])
 
 # Parameters for data generators which directly read
-# in the images and augment each individually, and thus
-# don't need to analyze the image set as a whole.
-intakeDatagenConfiguration = dict(
-    channel_shift_range=100,
-    rescale=1./255
-)
+# in the images, and thus don't need to analyze the image set as a whole.
 intakeDatagenFlowConfig = dict(
     target_size=(144,256),
     class_mode="binary"
@@ -27,16 +22,18 @@ intakeDatagenFlowConfig = dict(
 # to them by the intake datagens, as seen above.
 normalizDatagenConfiguration = dict(
     featurewise_center=True,
-    featurewise_std_normalization=True
+    featurewise_std_normalization=True,
+    channel_shift_range=100,
+    rescale=1./255
 )
 
 # Creating the data generators from the configurations above.
-print("<> Configuring Data-Generators")
-trainingDatagenIntake = ImageDataGenerator(**intakeDatagenConfiguration)
-testingDatagenIntake  = ImageDataGenerator(**intakeDatagenConfiguration)
+print("Configuring Data-Generators ...")
+trainingDatagenIntake = ImageDataGenerator()
+testingDatagenIntake  = ImageDataGenerator()
 trainingDatagenNorm = ImageDataGenerator(**normalizDatagenConfiguration)
 testingDatagenNorm  = ImageDataGenerator(**normalizDatagenConfiguration)
-print(">< Done Configuring Data-Generators")
+print("... Done Configuring Data-Generators")
 
 # Tell the intake data generators to take images
 # from the proper folders
@@ -53,18 +50,18 @@ print(">< Done Configuring Data-Generators")
 # coming out of the intake data generators, so that they can
 # adjust (normalize) the data properly.
 # TODO: The training and testing data are normalized separately. Do we really want this?
-print("<> Fitting Normalization Data-Generator")
+print("Fitting Normalization Data-Generator ...")
 trainingDatagenNorm.fit(
-    trainingDatagenIntake.flow_from_directory(
+    trainingDatagenIntake.flow_from_directory( # Really slow! TODO: Speed up? Possible even?
         "sorted_data/",
         **intakeDatagenFlowConfig
     )
 )
-print(">< Done Fitting Normalization Data-Generator")
+print("... Done Fitting Normalization Data-Generator")
 #testingDatagenNorm.fit(testingIntakeIterator)
 
 # TODO: Delete this, or move into the input for fitting the model – this is just to test.
-print("<> Testing Normalization Datagen")
+print("Testing Normalization Datagen ...")
 dumpingintothisvar = trainingDatagenNorm.flow(
     trainingDatagenIntake.flow_from_directory(
         "sorted_data/",
@@ -73,4 +70,4 @@ dumpingintothisvar = trainingDatagenNorm.flow(
     save_prefix="Norm",
     save_to_dir="augmented_data"
 )
-print(">< Done Testing Normalization Datagen")
+print("... Done Testing Normalization Datagen")
