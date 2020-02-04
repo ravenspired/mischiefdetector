@@ -38,17 +38,26 @@ testingDatagenNorm  = ImageDataGenerator(**normalizDatagenConfiguration)
 
 # Tell the intake data generators to take images
 # from the proper folders
-trainingIntakeIterator = trainingDatagenIntake.flow_from_directory("sorted_data/", **intakeDatagenFlowConfig)
+# TODO: These should both be moved into larger statements, not saved to variables.
+#trainingIntakeIterator = trainingDatagenIntake.flow_from_directory("sorted_data/", **intakeDatagenFlowConfig)
 #testingIntakeIterator = testingDatagenIntake.flow_from_directory("")
 
 # Tell the normalization datagens to take images from the intake datagens
 # TODO: Finish this
-trainingNormIterator = trainingDatagenNorm.flow
-testingNormIterator = 
+trainingNormIterator = trainingDatagenNorm.flow(trainingIntakeIterator, save_prefix="Norm", save_to_dir="augmented_data")
+#testingNormIterator = 
 
 # Give the normalization data generators a look at the data
 # coming out of the intake data generators, so that they can
 # adjust (normalize) the data properly.
 # TODO: The training and testing data are normalized separately. Do we really want this?
-trainingDatagenNorm.fit(trainingIntakeIterator)
+trainingDatagenNorm.fit(
+    trainingDatagenIntake.flow_from_directory(
+        "sorted_data/",
+        **intakeDatagenFlowConfig
+    )
+)
 #testingDatagenNorm.fit(testingIntakeIterator)
+
+# TODO: Delete this
+dumpingintothisvar = trainingNormIterator()
