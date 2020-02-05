@@ -38,11 +38,13 @@ print("... Done Configuring Data-Generators")
 # Tell the intake data generators to take images
 # from the proper folders
 # TODO: These should both be moved into larger statements, not saved to variables.
+
 #trainingIntakeIterator = trainingDatagenIntake.flow_from_directory("sorted_data/", **intakeDatagenFlowConfig)
 #testingIntakeIterator = testingDatagenIntake.flow_from_directory("")
 
 # Tell the normalization datagens to take images from the intake datagens
 # TODO: Also move into larger statements, not saved to variables.
+
 #trainingNormIterator = trainingDatagenNorm.flow(trainingIntakeIterator, save_prefix="Norm", save_to_dir="augmented_data")
 #testingNormIterator = 
 
@@ -50,24 +52,26 @@ print("... Done Configuring Data-Generators")
 # coming out of the intake data generators, so that they can
 # adjust (normalize) the data properly.
 # TODO: The training and testing data are normalized separately. Do we really want this?
-print("Fitting Normalization Data-Generator ...")
-trainingDatagenNorm.fit(
-    trainingDatagenIntake.flow_from_directory( # Really slow! TODO: Speed up? Possible even?
-        "sorted_data/",
-        **intakeDatagenFlowConfig
-    )
-)
-print("... Done Fitting Normalization Data-Generator")
+
+#print("Fitting Normalization Data-Generator ...")
+#trainingDatagenNorm.fit(
+#    trainingDatagenIntake.flow_from_directory( # Really slow! TODO: Speed up? Possible even?
+#        "sorted_data/",
+#        **intakeDatagenFlowConfig
+#    )
+#)
+#print("... Done Fitting Normalization Data-Generator")
 #testingDatagenNorm.fit(testingIntakeIterator)
 
 # TODO: Delete this, or move into the input for fitting the model – this is just to test.
-print("Testing Normalization Datagen ...")
-dumpingintothisvar = trainingDatagenNorm.flow(
-    trainingDatagenIntake.flow_from_directory(
-        "sorted_data/",
-        **intakeDatagenFlowConfig
-    ),
-    save_prefix="Norm",
-    save_to_dir="augmented_data"
-)
-print("... Done Testing Normalization Datagen")
+
+#print("Testing Normalization Datagen ...")
+#dumpingintothisvar = trainingDatagenNorm.flow(
+#    trainingDatagenIntake.flow_from_directory(
+#        "sorted_data/",
+#        **intakeDatagenFlowConfig
+#    ),
+#    save_prefix="Norm",
+#    save_to_dir="augmented_data"
+#)
+#print("... Done Testing Normalization Datagen")
