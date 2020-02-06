@@ -6,14 +6,16 @@ from keras.layers import Conv2D, MaxPooling2D
 from keras.models import Sequential
 from keras.preprocessing.image import ImageDataGenerator
 
-#model = Sequential([
-#
-#])
+# *** PARAMETERS ***
+
+input_shape = (144,256)
+
+# *** DATA INTAKE ***
 
 # Parameters for data generators which directly read
 # in the images, and thus don't need to analyze the image set as a whole.
 intakeDatagenFlowConfig = dict(
-    target_size=(144,256),
+    target_size=input_shape,
     class_mode="binary"
 )
 
@@ -75,3 +77,13 @@ print("... Done Configuring Data-Generators")
 #    save_to_dir="augmented_data"
 #)
 #print("... Done Testing Normalization Datagen")
+
+# *** ACTUAL NEURAL NET ***
+
+model = Sequential([
+    Conv2D(
+        32, kernel_size=(3, 3), strides=(1, 1),
+        activation='relu',
+        input_shape=input_shape
+    ),
+])
