@@ -170,7 +170,7 @@ deepCNN.fit_generator(
         subset='validation',
         **intakeDatagenFlowConfig
     ),
-    #workers=4,
-    #use_multiprocessing=True
+    workers=4,
+    use_multiprocessing=True
 )
 print("... Done Training Neural Network")
