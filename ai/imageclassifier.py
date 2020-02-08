@@ -134,8 +134,10 @@ print("Loading Weights ... ")
 try:
     deepCNN.load_weights('checkpoints/weights.best.hdf5')
     print("... Done Loading Weights")
-except:
+except Exception:
+    print(Exception)
     print("... Couldn't find checkpoint file")
+    pass
 
 # Prepare the neural network for training
 print("Compiling Neural Network ... ")
@@ -168,7 +170,7 @@ deepCNN.fit_generator(
         subset='validation',
         **intakeDatagenFlowConfig
     ),
-    workers=4,
-    use_multiprocessing=True
+    #workers=4,
+    #use_multiprocessing=True
 )
 print("... Done Training Neural Network")
