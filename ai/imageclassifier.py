@@ -156,7 +156,7 @@ deepCNN.fit_generator(
     ),
     verbose=1,
     epochs=10,
-    callbacks=[keras.callbacks.callbacks.ModelCheckpoint(
+    callbacks=[keras.callbacks.ModelCheckpoint(
         'checkpoints/weights.best.hdf5',
         monitor='val_accuracy',
         mode='max',
