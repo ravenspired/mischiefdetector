@@ -5,6 +5,7 @@ from keras.layers import Dropout, Dense, Flatten
 from keras.layers import Conv2D, SpatialDropout2D
 from keras.models import Sequential
 from keras.preprocessing.image import ImageDataGenerator
+from keras.callbacks.callbacks import ModelCheckpoint
 
 # *** PARAMETERS ***
 
@@ -14,6 +15,11 @@ from keras.preprocessing.image import ImageDataGenerator
 
 # Parameters for data generators which directly read
 # in the images, and thus don't need to analyze the image set as a whole.
+intakeDatagenConfiguration = dict(
+    channel_shift_range=100,
+    rescale=1./255,
+    validation_split=0.1
+)
 intakeDatagenFlowConfig = dict(
     target_size=(144,256),
     class_mode="binary"
@@ -25,14 +31,12 @@ intakeDatagenFlowConfig = dict(
 normalizDatagenConfiguration = dict(
     featurewise_center=True,
     featurewise_std_normalization=True,
-    channel_shift_range=100,
-    rescale=1./255
 )
 
 # Creating the data generators from the configurations above.
 print("Configuring Data-Generators ...")
-trainingDatagenIntake = ImageDataGenerator()
-testingDatagenIntake  = ImageDataGenerator()
+trainingDatagenIntake = ImageDataGenerator(**intakeDatagenConfiguration)
+testingDatagenIntake  = ImageDataGenerator(**intakeDatagenConfiguration)
 trainingDatagenNorm = ImageDataGenerator(**normalizDatagenConfiguration)
 testingDatagenNorm  = ImageDataGenerator(**normalizDatagenConfiguration)
 print("... Done Configuring Data-Generators")
@@ -80,7 +84,8 @@ print("... Done Configuring Data-Generators")
 
 # *** ACTUAL NEURAL NET ***
 
-model = Sequential([
+print("Configuring Neural Network ... ")
+deepCNN = Sequential([
     Conv2D( #1
         16, kernel_size=(3, 3), strides=(2, 2),
         activation='relu',
@@ -122,10 +127,48 @@ model = Sequential([
     Dense(10, activation='relu'),
     Dense(1, activation='sigmoid')
 ])
+print("... Done Configuring Neural Network")
+
+# Load weights from the best performing checkpoint
+print("Loading Weights ... ")
+try:
+    deepCNN.load_weights('checkpoints/weights.best.hdf5')
+    print("... Done Loading Weights")
+except:
+    print("... Couldn't find checkpoint file")
 
 # Prepare the neural network for training
-model.compile(
-    optimizer='rmsprop',
-    loss='bianary-crossentropy',
+print("Compiling Neural Network ... ")
+deepCNN.compile(
+    optimizer='adam',
+    loss='binary_crossentropy',
     metrics=['accuracy']
 )
+print("... Done Compiling Neural Network")
+
+# Train the model!
+print("Training Neural Network ... ")
+deepCNN.fit_generator(
+    trainingDatagenIntake.flow_from_directory(
+        'sorted_data',
+        subset='training',
+        **intakeDatagenFlowConfig
+    ),
+    verbose=1,
+    epochs=10,
+    callbacks=[ModelCheckpoint(
+        'checkpoints/weights.best.hdf5',
+        monitor='val_accuracy',
+        mode='max',
+        save_best_only=True,
+        verbose=1
+    )],
+    validation_data=trainingDatagenIntake.flow_from_directory(
+        'sorted_data',
+        subset='validation',
+        **intakeDatagenFlowConfig
+    ),
+    workers=4,
+    use_multiprocessing=True
+)
+print("... Done Training Neural Network")
