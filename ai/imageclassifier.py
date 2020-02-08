@@ -1,21 +1,21 @@
 import tensorflow as tf
 import numpy as np
 from tensorflow import keras
-from keras.layers import Dense, Flatten
-from keras.layers import Conv2D, MaxPooling2D
+from keras.layers import Dropout, Dense, Flatten
+from keras.layers import Conv2D, SpatialDropout2D
 from keras.models import Sequential
 from keras.preprocessing.image import ImageDataGenerator
 
 # *** PARAMETERS ***
 
-input_shape = (144,256)
+
 
 # *** DATA INTAKE ***
 
 # Parameters for data generators which directly read
 # in the images, and thus don't need to analyze the image set as a whole.
 intakeDatagenFlowConfig = dict(
-    target_size=input_shape,
+    target_size=(144,256),
     class_mode="binary"
 )
 
@@ -81,9 +81,51 @@ print("... Done Configuring Data-Generators")
 # *** ACTUAL NEURAL NET ***
 
 model = Sequential([
-    Conv2D(
-        32, kernel_size=(3, 3), strides=(1, 1),
+    Conv2D( #1
+        16, kernel_size=(3, 3), strides=(2, 2),
         activation='relu',
-        input_shape=input_shape
+        input_shape=(144, 256, 3)
     ),
+    SpatialDropout2D(0.8),
+    Conv2D( #2
+        32, kernel_size=(3, 3), strides=(2, 2),
+        activation='relu',
+        input_shape=(71, 127, 16)
+    ),
+    SpatialDropout2D(0.8),
+    Conv2D( #3
+        16, kernel_size=(3, 3), strides=(2, 2),
+        activation='relu',
+        input_shape=(35, 63, 32)
+    ),
+    SpatialDropout2D(0.8),
+    Conv2D( #4
+        8, kernel_size=(3, 3), strides=(2, 2),
+        activation='relu',
+        input_shape=(17, 31, 16)
+    ),
+    SpatialDropout2D(0.8),
+    Conv2D( #5
+        6, kernel_size=(3, 3), strides=(2, 2),
+        activation='relu',
+        input_shape=(8, 15, 8)
+    ),
+    Flatten(),
+    Dense(720, activation='relu'),
+    Dropout(0.5),
+    Dense(480, activation='relu'),
+    Dropout(0.5),
+    Dense(160, activation='relu'),
+    Dropout(0.5),
+    Dense(40, activation='relu'),
+    Dropout(0.5),
+    Dense(10, activation='relu'),
+    Dense(1, activation='sigmoid')
 ])
+
+# Prepare the neural network for training
+model.compile(
+    optimizer='rmsprop',
+    loss='bianary-crossentropy',
+    metrics=['accuracy']
+)
