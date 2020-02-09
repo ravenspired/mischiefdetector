@@ -5,7 +5,7 @@ from keras.layers import Dropout, Dense, Flatten
 from keras.layers import Conv2D, SpatialDropout2D
 from keras.models import Sequential
 from keras.preprocessing.image import ImageDataGenerator
-#from keras.callbacks.callbacks import ModelCheckpoint
+from keras.callbacks.callbacks import ModelCheckpoint
 
 # *** PARAMETERS ***
 
@@ -158,7 +158,7 @@ deepCNN.fit_generator(
     ),
     verbose=1,
     epochs=10,
-    callbacks=[keras.callbacks.ModelCheckpoint(
+    callbacks=[ModelCheckpoint(
         'checkpoints/weights.best.hdf5',
         monitor='val_accuracy',
         mode='max',
