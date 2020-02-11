@@ -1,0 +1,13 @@
+#!/bin/bash
+echo "$(date) - Starting screencap"
+
+time=1
+echo "$(date) - School is in session"
+echo "$(date) - Sleeping for $time seconds"
+sleep $time
+echo "taking screenshot"
+subdir="$(date '+%C%y-%m-%d %H-%M-%S')"
+mkdir -p ~/".screencap"/"$subdir"
+echo "$(date) - Taking screenshot $i"
+
+screencapture -x ~/.screencap/"$subdir"/"$(date)".png
