@@ -157,7 +157,7 @@ deepCNN.fit_generator(
         **intakeDatagenFlowConfig
     ),
     verbose=1,
-    epochs=10,
+    epochs=40,
     steps_per_epoch=12,
     callbacks=[ModelCheckpoint(
         'checkpoints/weights.best.hdf5',
