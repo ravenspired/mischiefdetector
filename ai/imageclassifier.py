@@ -87,33 +87,33 @@ print("... Done Configuring Data-Generators")
 print("Configuring Neural Network ... ")
 deepCNN = Sequential([
     Conv2D( #1
-        16, kernel_size=(3, 3), strides=(2, 2),
+        32, kernel_size=(3, 3), strides=(2, 2),
         activation='relu',
         input_shape=(144, 256, 3)
     ),
-    SpatialDropout2D(0.8),
+    SpatialDropout2D(0.6),
     Conv2D( #2
         32, kernel_size=(3, 3), strides=(2, 2),
         activation='relu',
-        input_shape=(71, 127, 16)
+        input_shape=(71, 127, 32)
     ),
-    SpatialDropout2D(0.8),
+    SpatialDropout2D(0.6),
     Conv2D( #3
         16, kernel_size=(3, 3), strides=(2, 2),
         activation='relu',
         input_shape=(35, 63, 32)
     ),
-    SpatialDropout2D(0.8),
+    SpatialDropout2D(0.6),
     Conv2D( #4
-        8, kernel_size=(3, 3), strides=(2, 2),
+        16, kernel_size=(3, 3), strides=(2, 2),
         activation='relu',
         input_shape=(17, 31, 16)
     ),
-    SpatialDropout2D(0.8),
+    SpatialDropout2D(0.6),
     Conv2D( #5
-        6, kernel_size=(3, 3), strides=(2, 2),
+        8, kernel_size=(3, 3), strides=(2, 2),
         activation='relu',
-        input_shape=(8, 15, 8)
+        input_shape=(8, 15, 16)
     ),
     Flatten(),
     Dense(720, activation='relu'),
