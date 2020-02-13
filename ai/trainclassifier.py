@@ -159,13 +159,12 @@ deepCNN.fit_generator(
     verbose=1,
     epochs=40,
     steps_per_epoch=12,
-    callbacks=[ModelCheckpoint(
-        'checkpoints/weights.best.hdf5',
-        monitor='val_accuracy',
-        mode='max',
-        save_best_only=True,
-        verbose=1
-    )],
+    callbacks=[
+        ModelCheckpoint(
+            'checkpoints/weights.best.hdf5',
+            interval=4
+        )
+    ],
     validation_data=trainingDatagenIntake.flow_from_directory(
         'sorted_data',
         subset='validation',
