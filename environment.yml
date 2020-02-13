@@ -4,5 +4,6 @@ dependencies:
   - tensorflow=1.*
   - numpy=1.17.2
   - keras
+  - pillow
   - keras-preprocessing
   - keras-applications
