@@ -4,33 +4,34 @@ echo 'SYNTAX: capsort [File List] [F folder] [J Folder] [SPACEBAR Folder]'
 OldIFS="$IFS"
 IFS='
 '
-startline=$(cat "$(dirname $0)"/lineno)
-lineno=0
+if [ -f "$(dirname $0)"/lineno ]
+then
+	lineno=$(cat "$(dirname $0)"/lineno)
+else
+	lineno=1
+fi
 
-while read -r line
+while file=`awk "NR==$lineno{print;exit}" $1`
 do
+	echo -n "$lineno" > "$(dirname $0)"/lineno
+	choice=""
+	"$(dirname $0)"/imgcat "$file"
+	until [ "$choice" = "f" ] || [ "$choice" = "j" ] || [ "$choice" = " " ]
+	do
+		read -n 1 choice
+	done
+	case "$choice" in 
+	"f")
+		cp "$file" "$2/$(uuidgen))"-"$(basename "$file")"
+		;;
+	"j")
+		cp "$file" "$3/$(uuidgen)"-"$(basename "$file")"
+		;;
+	" ")
+		cp "$file" "$4/$(uuidgen)"-"$(basename "$file")"
+		;;
+	esac
 	lineno=$((lineno+1))
-	if [ $lineno -ge $startline ]
-	then
-		echo -n "$lineno" > "$(dirname $0)"/lineno
-		choice=""
-		"$(dirname $0)"/imgcat "$file"
-		until [ "$choice" = "f" ] || [ "$choice" = "j" ] || [ "$choice" = " " ]
-		do
-			read -n 1 choice
-		done
-		case "$choice" in 
-		"f")
-			cp "$file" "$2/$RANDOM$RANDOM"-"$(basename "$file")"
-			;;
-		"j")
-			cp "$file" "$3/$RANDOM$RANDOM"-"$(basename "$file")"
-			;;
-		" ")
-			cp "$file" "$4/$RANDOM$RANDOM"-"$(basename "$file")"
-			;;
-		esac
-	fi
-done < $1
+done
 
 IFS="$OldIFS"
