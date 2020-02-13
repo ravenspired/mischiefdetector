@@ -171,7 +171,7 @@ deepCNN.fit_generator(
         subset='validation',
         **intakeDatagenFlowConfig
     ),
-    validation_steps=1,
+    validation_steps=2,
     workers=4,
     use_multiprocessing=True
 )
