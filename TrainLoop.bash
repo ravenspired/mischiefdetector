@@ -18,3 +18,10 @@ until read -t 3 -n 1; do
     echo '** NEXT ROUND OF TRAINING **'
     echo '** PRESS ANY KEY TO CANCEL **'
 done
+
+
+echo '** FINAL SYNC **'
+git add -A
+git commit -m 'Final Automated Training Commit'
+git pull
+git push
