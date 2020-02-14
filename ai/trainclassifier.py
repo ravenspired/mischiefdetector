@@ -21,7 +21,7 @@ intakeDatagenConfiguration = dict(
     validation_split=0.1
 )
 intakeDatagenFlowConfig = dict(
-    target_size=(144,256),
+    target_size=(288,512),
     class_mode="binary"
 )
 
@@ -89,42 +89,47 @@ deepCNN = Sequential([
     Conv2D( #1
         32, kernel_size=(3, 3), strides=(2, 2),
         activation='relu',
-        input_shape=(144, 256, 3)
+        input_shape=(288, 512, 3)
     ),
     SpatialDropout2D(0.6),
     Conv2D( #2
         32, kernel_size=(3, 3), strides=(2, 2),
-        activation='relu',
-        input_shape=(71, 127, 32)
+        activation='relu'
     ),
     SpatialDropout2D(0.6),
     Conv2D( #3
-        16, kernel_size=(3, 3), strides=(2, 2),
-        activation='relu',
-        input_shape=(35, 63, 32)
+        32, kernel_size=(3, 3), strides=(2, 2),
+        activation='relu'
     ),
     SpatialDropout2D(0.6),
     Conv2D( #4
-        16, kernel_size=(3, 3), strides=(2, 2),
-        activation='relu',
-        input_shape=(17, 31, 16)
+        32, kernel_size=(3, 3), strides=(2, 2),
+        activation='relu'
     ),
     SpatialDropout2D(0.6),
     Conv2D( #5
-        8, kernel_size=(3, 3), strides=(2, 2),
+        32, kernel_size=(3, 3), strides=(2, 2),
+        activation='relu'
+    ),
+    SpatialDropout2D(0.6),
+    Conv2D( #6
+        32, kernel_size=(3, 3), strides=(2, 2),
+        activation='relu'
+    ),
+    SpatialDropout2D(0.6),
+    Conv2D( #7
+        32, kernel_size=(3, 3), strides=(2, 2),
         activation='relu',
-        input_shape=(8, 15, 16)
+        input_shape=(3, 7, 32)
     ),
     Flatten(),
-    Dense(720, activation='relu'),
+    Dense(672), # 3x7x32=672
     Dropout(0.5),
-    Dense(480, activation='relu'),
+    Dense(300),
     Dropout(0.5),
-    Dense(160, activation='relu'),
+    Dense(100),
     Dropout(0.5),
-    Dense(40, activation='relu'),
-    Dropout(0.5),
-    Dense(10, activation='relu'),
+    Dense(20),
     Dense(1, activation='sigmoid')
 ])
 print("... Done Configuring Neural Network")
@@ -161,8 +166,16 @@ deepCNN.fit_generator(
     steps_per_epoch=12,
     callbacks=[
         ModelCheckpoint(
+            'checkpoints/weights.{epoch:02d}-{val_acc:.2f}.hdf5',
+            monitor='val_acc',
+            mode='max',
+            save_best_only=True
+        ),
+        ModelCheckpoint(
             'checkpoints/weights.best.hdf5',
-            interval=4
+            monitor='val_acc',
+            mode='max',
+            save_best_only=True
         )
     ],
     validation_data=trainingDatagenIntake.flow_from_directory(
