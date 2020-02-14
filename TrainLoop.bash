@@ -7,10 +7,7 @@ cd /content/mischiefdetector
 /root/miniconda3/bin/conda activate MischiefDetectorpython
 until read -t 3 -n 1; do
     echo '** SYNCING **'
-    git add -A
-    git commit -m 'Automated Training Commit'
-    git pull
-    git push
+    cp checkpoints/* /content/drive/checkpoints
 
     echo '** TRAINING **'
     python ai/trainclassifier.py
@@ -21,7 +18,4 @@ done
 
 
 echo '** FINAL SYNC **'
-git add -A
-git commit -m 'Final Automated Training Commit'
-git pull
-git push
+cp checkpoints/* /content/drive/checkpoints
