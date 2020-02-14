@@ -162,7 +162,7 @@ deepCNN.fit_generator(
         **intakeDatagenFlowConfig
     ),
     verbose=1,
-    epochs=40,
+    epochs=100,
     steps_per_epoch=12,
     callbacks=[
         ModelCheckpoint(
