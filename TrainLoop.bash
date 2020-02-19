@@ -8,6 +8,7 @@ cd /content/mischiefdetector
 until read -t 3 -n 1; do
     echo '** SYNCING **'
     cp checkpoints/* /content/drive/My\ Drive/checkpoints
+    cp /content/drive/My\ Drive/checkpoints/* /content/mischiefdetector/checkpoints
 
     echo '** TRAINING **'
     python ai/trainclassifier.py
