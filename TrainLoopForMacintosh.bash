@@ -4,7 +4,7 @@
 # TODO: Actually modify it
 
 cd ~/Documents/GitHub\ Desktop/mischiefdetector
-/root/miniconda3/bin/conda activate MischiefDetectorpython
+/opt/anaconda3/condabin/conda activate MischiefDetector
 until read -t 3 -n 1; do
     echo '** SYNCING **'
     git add -A
