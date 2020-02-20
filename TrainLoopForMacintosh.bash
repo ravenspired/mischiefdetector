@@ -3,7 +3,7 @@
 # ( I've modified it to work on my mac )
 # TODO: Actually modify it
 
-cd ~/Documents/GitHub\ Desktop/mischiefdetector
+cd ~/Documents/GitHub/mischiefdetector
 /opt/anaconda3/condabin/conda activate MischiefDetector
 until read -t 3 -n 1; do
     echo '** SYNCING **'
