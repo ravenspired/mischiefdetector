@@ -69,8 +69,6 @@ print("... Done Configuring Data-Generators")
 #print("... Done Fitting Normalization Data-Generator")
 #testingDatagenNorm.fit(testingIntakeIterator)
 
-# TODO: Delete this, or move into the input for fitting the model – this is just to test.
-
 #print("Testing Normalization Datagen ...")
 #dumpingintothisvar = trainingDatagenNorm.flow(
 #    trainingDatagenIntake.flow_from_directory(
