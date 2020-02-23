@@ -4,7 +4,7 @@
 # TODO: Actually modify it
 
 cd ~/Documents/GitHub/mischiefdetector
-/opt/anaconda3/condabin/conda activate MischiefDetector
+source /opt/anaconda3/bin/activate MischiefDetector
 until read -t 3 -n 1; do
     echo '** SYNCING **'
     git add -A
@@ -22,6 +22,6 @@ done
 
 echo '** FINAL SYNC **'
 git add -A
-git commit -m 'Final Automated Training Commit of Session'
+git commit -m 'Automated Training Commit (End of Session)'
 git pull
 git push
