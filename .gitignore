@@ -131,3 +131,5 @@ dmypy.json
 # MacOS
 *.DS_Store
 sorted_data/.DS_Store
+.vscode/settings.json
+sorted_data/.DS_Store
