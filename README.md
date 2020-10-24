@@ -1,5 +1,6 @@
 # The Mischief Detector
-
+Work resumed from 10-24-2020
+- [x] Aquire data
 - [ ] Create Dataset from images
 - [ ] Create Prototype Model
 - [ ] Get Model to Work
