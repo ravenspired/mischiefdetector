@@ -14,7 +14,7 @@ until read -t 3 -n 1; do
     echo '** SYNCING **'
     git add -A
     git commit -m 'Automated Training Commit'
-    git pull
+    git pull --no-edit
     git push
 
     echo '** TRAINING **'
@@ -28,5 +28,5 @@ done
 echo '** FINAL SYNC **'
 git add -A
 git commit -m 'Automated Training Commit (End of Session)'
-git pull
+git pull --no-edit
 git push
