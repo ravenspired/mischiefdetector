@@ -1,10 +1,15 @@
 #!/bin/bash
 
 # ( I've modified it to work on my mac )
-# TODO: Actually modify it
+# Run this using source or .
+# Or, if running it by other means,
+# ensure your .bash_profile is executed first,
+# in the same bash instance.
+# This is necessary for conda to initialize itself properly.
+# Otherwise, the "conda" command below will throw a command not found error.
 
 cd ~/Documents/GitHub/mischiefdetector
-source /opt/anaconda3/bin/activate MischiefDetector
+conda activate MischiefDetector
 until read -t 3 -n 1; do
     echo '** SYNCING **'
     git add -A
