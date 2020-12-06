@@ -52,7 +52,7 @@ print("... Done Configuring Data-Generators")
 # TODO: Also move into larger statements, not saved to variables.
 
 #trainingNormIterator = trainingDatagenNorm.flow(trainingIntakeIterator, save_prefix="Norm", save_to_dir="augmented_data")
-#testingNormIterator = 
+#testingNormIterator =
 
 # Give the normalization data generators a look at the data
 # coming out of the intake data generators, so that they can
@@ -164,14 +164,14 @@ deepCNN.fit_generator(
     steps_per_epoch=12,
     callbacks=[
         ModelCheckpoint(
-            'checkpoints/weights.{epoch:02d}-{val_acc:.2f}.hdf5',
-            monitor='val_acc',
+            'checkpoints/weights.{epoch:02d}-{val_accuracy:.2f}.hdf5',
+            monitor='val_accuracy',
             mode='max',
             save_best_only=True
         ),
         ModelCheckpoint(
             'checkpoints/weights.best.hdf5',
-            monitor='val_acc',
+            monitor='val_accuracy',
             mode='max',
             save_best_only=True
         )
