@@ -8,7 +8,11 @@
 # This is necessary for conda to initialize itself properly.
 # Otherwise, the "conda" command below will throw a command not found error.
 
-cd ~/Documents/GitHub/mischiefdetector
+# Also, be sure to run this from the root directory
+# of the mischiefdetector project,
+# or specify the path using the mischiefLocation variable.
+
+[ $mischiefLocation ] && cd $mischiefLocation
 conda activate MischiefDetector
 until read -t 3 -n 1; do
     echo '** SYNCING **'
@@ -20,7 +24,7 @@ until read -t 3 -n 1; do
     echo '** TRAINING **'
     python ai/trainclassifier.py
 
-    echo '** NEXT ROUND OF TRAINING **'
+    echo '** NEXT ROUND  OF TRAINING **'
     echo '** PRESS ANY KEY TO CANCEL **'
 done
 
