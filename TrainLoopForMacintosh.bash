@@ -12,7 +12,7 @@
 # of the mischiefdetector project,
 # or specify the path using the mischiefLocation variable.
 
-[ $mischiefLocation ] && cd $mischiefLocation
+[ "$mischiefLocation" ] && cd "$mischiefLocation"
 conda activate MischiefDetector
 until read -t 3 -n 1; do
     echo '** SYNCING **'
