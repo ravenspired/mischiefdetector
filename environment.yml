@@ -7,3 +7,4 @@ dependencies:
   - pillow
   - keras-preprocessing
   - keras-applications
+  - pandas
