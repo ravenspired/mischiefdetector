@@ -26,4 +26,3 @@ server login information:
 mischiefservice@gmail.com:scifairproj!
 
 
-ignore_me
