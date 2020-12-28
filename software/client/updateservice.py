@@ -45,6 +45,7 @@ if files == False:
     os.remove("imagecompressor.py")
     os.remove("sendtoserver.py")
     os.remove("service.py")
+    time.sleep(5)
     os.rename("imagecompressor_updated.py", "imagecompressor.py")
     os.rename("sendtoserver_updated.py", "sendtoserver.py")
     os.rename("service_updated.py", "service.py")
