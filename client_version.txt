@@ -1,0 +1,3 @@
+#This is a file version. Every time a script for the client is updated, the number below this line must be edited to force an update. DO NOT DELETE THIS FILE
+
+version=1
