@@ -1,8 +1,8 @@
 # The Mischief Detector
 Work resumed from 10-24-2020
 - [x] Ponder the meaning of life
-- [ ] Create Dataset from images
-- [ ] Create Prototype Model
+- [x] Create Dataset from images
+- [x] Create Prototype Model
 - [ ] Get Model to Work
 - [ ] Create client program to securely take and process screenshots
 - [ ] Create server program to recieve alerts from clients and notify authorities (optional)
