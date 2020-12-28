@@ -38,7 +38,7 @@ if files == False:
 
     urllib.request.urlretrieve ("https://raw.githubusercontent.com/ravenspired/mischiefdetector/master/software/client/imagecompressor.py", "imagecompressor_updated.py")
     urllib.request.urlretrieve ("https://raw.githubusercontent.com/ravenspired/mischiefdetector/master/software/client/sendtoserver.py", "sendtoserver_updated.py")
-    urllib.request.urlretrieve ("https://github.com/ravenspired/mischiefdetector/blob/master/software/client/service.py", "service_updated.py")#saves the update as a python file
+    urllib.request.urlretrieve ("https://raw.githubusercontent.com/ravenspired/mischiefdetector/master/software/client/service.py", "service_updated.py")#saves the update as a python file
     print("unpacking and replacing old files with new...")
     os.remove("originalupdate.txt")
     os.rename("sampleupdate.txt", "originalupdate.txt")
