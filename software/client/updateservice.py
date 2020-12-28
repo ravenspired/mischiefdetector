@@ -5,6 +5,14 @@
 
 import urllib.request, filecmp, sys, os, time
 
+
+
+#INSECURE CODE: WORKAROUND UNTIL WE CAN SET UP ENCRYPTION CERTIFICATES
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+#END OF INSECURE CODE
+
+
 force_update = False #change to true to force an update
 files_to_update = 3 #deprecated, will be removed
 
