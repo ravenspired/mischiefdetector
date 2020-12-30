@@ -3,4 +3,5 @@
 
 conda env create -f environment.yml
 conda activate mischiefdetector
-pip install tensorflow==1.*
+conda uninstall --yes --force tensorflow
+pip install tensorflow==2.0.0
