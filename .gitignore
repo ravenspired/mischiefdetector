@@ -133,3 +133,6 @@ dmypy.json
 sorted_data/.DS_Store
 .vscode/settings.json
 sorted_data/.DS_Store
+
+# Ignore screenshots
+screencaps/subfolder/cap*.png
