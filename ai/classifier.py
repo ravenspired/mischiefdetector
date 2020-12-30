@@ -22,7 +22,6 @@ trainDatagenConfiguration = intakeDatagenConfiguration
 trainDatagenConfiguration['validation_split'] = 0.1
 
 testDatagenConfiguration = intakeDatagenConfiguration
-testDatagenConfiguration['shuffle'] = False
 
 intakeDatagenFlowConfig = dict(
     target_size=(288, 512),
@@ -161,8 +160,6 @@ def compile_network():
 
 # Train the model!
 def train():
-    load_from_checkpt()
-    compile_network()
     print("Training Neural Network ... ")
     deepCNN.fit_generator(
         trainingDatagenIntake.flow_from_directory(
@@ -202,6 +199,7 @@ def train():
 def predict_in_directory(directory):
     generator = testingDatagenIntake.flow_from_directory(
         directory,
+        shuffle=False,
         **intakeDatagenFlowConfig
     )
 
