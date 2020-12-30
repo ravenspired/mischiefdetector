@@ -9,8 +9,9 @@ mkdir ~/mischief_detector/unacceptable_scrnsht
 touch ~/mischief_detector/mischief.log
 
 curl https://raw.githubusercontent.com/ravenspired/mischiefdetector/master/software/client/imagecompressor.py --output ~/mischief_detector/imagecompressor.py
-curl https://raw.githubusercontent.com/ravenspired/mischiefdetector/master/software/server/server.py --output ~/mischief_detector
-
+curl https://raw.githubusercontent.com/ravenspired/mischiefdetector/master/software/client/sendtoserver.py --output ~/mischief_detector/sendtoserver.py
+curl https://raw.githubusercontent.com/ravenspired/mischiefdetector/master/software/client/service.py --output ~/mischief_detector/service.py
+curl https://raw.githubusercontent.com/ravenspired/mischiefdetector/master/software/client/updateservice.py --output ~/mischief_detector/updateservice.py
+curl https://raw.githubusercontent.com/ravenspired/mischiefdetector/master/software/client/originalupdate.txt --output ~/mischief_detector/originalupdate.txt
 
 echo "Installation completed."
-
