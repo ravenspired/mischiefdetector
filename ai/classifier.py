@@ -147,7 +147,7 @@ def load_from_checkpt(checkpoint_path='checkpoints/weights.best.hdf5'):
         raise
 
 
-# Prepare the neural network for training
+# Prepare the neural network for training/testing
 def compile_network():
     print("Compiling Neural Network ... ")
     deepCNN.compile(
@@ -196,7 +196,7 @@ def train():
     print("... Done Training Neural Network")
 
 
-def predict_in_directory(directory):
+def predict_in_directory(directory, verbosity=1):
     generator = testingDatagenIntake.flow_from_directory(
         directory,
         shuffle=False,
@@ -206,7 +206,7 @@ def predict_in_directory(directory):
     predictions = deepCNN.predict_generator(
         generator,
         steps=len(generator),
-        verbose=1
+        verbose=verbosity
     )
 
     classes = np.round(predictions)
