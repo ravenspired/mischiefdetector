@@ -136,3 +136,4 @@ sorted_data/.DS_Store
 
 # Ignore screenshots
 screencaps/subfolder/cap*.png
+savedcaps/*.png
