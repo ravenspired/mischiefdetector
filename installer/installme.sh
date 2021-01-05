@@ -1,4 +1,4 @@
-#This script installs files to your computer
+#This script installs mischief detector onto your computer. It will also install updates, but it is recommended to use the updater
 
 echo "Installation is now in progress."
 
