@@ -22,7 +22,6 @@ trainDatagenConfiguration = intakeDatagenConfiguration
 trainDatagenConfiguration['validation_split'] = 0.1
 
 testDatagenConfiguration = intakeDatagenConfiguration
-testDatagenConfiguration['shuffle'] = False
 
 intakeDatagenFlowConfig = dict(
     target_size=(288, 512),
@@ -148,7 +147,7 @@ def load_from_checkpt(checkpoint_path='checkpoints/weights.best.hdf5'):
         raise
 
 
-# Prepare the neural network for training
+# Prepare the neural network for training/testing
 def compile_network():
     print("Compiling Neural Network ... ")
     deepCNN.compile(
@@ -161,8 +160,6 @@ def compile_network():
 
 # Train the model!
 def train():
-    load_from_checkpt()
-    compile_network()
     print("Training Neural Network ... ")
     deepCNN.fit_generator(
         trainingDatagenIntake.flow_from_directory(
@@ -199,16 +196,17 @@ def train():
     print("... Done Training Neural Network")
 
 
-def predict_in_directory(directory):
+def predict_in_directory(directory, verbosity=1):
     generator = testingDatagenIntake.flow_from_directory(
         directory,
+        shuffle=False,
         **intakeDatagenFlowConfig
     )
 
     predictions = deepCNN.predict_generator(
         generator,
         steps=len(generator),
-        verbose=1
+        verbose=verbosity
     )
 
     classes = np.round(predictions)

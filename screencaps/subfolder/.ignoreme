@@ -1,0 +1,2 @@
+This file exists solely to make git recognize these two folders.
+Git seems to ignore empty directory structures that contain no files.

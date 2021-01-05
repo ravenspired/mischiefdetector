@@ -1,8 +1,8 @@
 name: MischiefDetector
 dependencies:
   - python=3.7.4
-  - tensorflow=1.*
   - numpy=1.17.2
+  - tensorflow=2.0.0
   - keras
   - pillow
   - keras-preprocessing
