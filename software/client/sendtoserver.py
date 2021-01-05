@@ -5,7 +5,7 @@ from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-subject = "Violation on managed device at time: " + time.time()
+subject = "Violation on managed device at time: " + str(time.time())
 body = "A violation has been detected. Please review."
 sender_email = "mischiefservice@gmail.com"
 receiver_email = "mischiefservice@gmail.com"
@@ -21,7 +21,7 @@ message["Bcc"] = receiver_email  # Recommended for mass emails, but not needed a
 # Add body to email
 message.attach(MIMEText(body, "plain"))
 
-filename = "offender_screenshot.png"  # In same directory as script
+filename = "offending_screenshot.png"  # In same directory as script
 
 # Open PDF file in binary mode
 with open(filename, "rb") as attachment:
