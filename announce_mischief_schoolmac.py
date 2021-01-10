@@ -13,7 +13,6 @@ mischief.load_from_checkpt()
 mischief.compile_network()
 
 while True:
-    sleep(5)
     os.system("""screencapture -x """ + SCREENCAP_DIR + """subfolder/cap.png &> /dev/null""")
 
     # Take screenshots of all monitors
