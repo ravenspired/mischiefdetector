@@ -61,8 +61,8 @@ while True:
         # print(index)
         mischievousness = round(mischiefs[index] * 1000 / test_count) / 10
         print(image_info['file'] + ": " + str(mischievousness) + "% mischievous")
-        if mischiefs[index] > test_count/2:
-            os.system("say 'Mischief detected on screen " + str(index + 1) + ", " + str(mischievousness) + "% confidence.'")
+        if mischiefs[index] > test_count/10:
+            os.system("say 'Mischief detected on screen " + str(index + 1) + ", " + str(mischievousness) + "%.'")
             os.system("cp " + SCREENCAP_DIR + image_info['file'] + " " + "savedcaps/$(date +%s)_" + str(index) + "_" + str(mischiefs[index]) + ".png")
 
     os.system("rm -f " + SCREENCAP_DIR + "subfolder/cap*.png")

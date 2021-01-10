@@ -53,11 +53,11 @@ while True:
         # print(index)
         mischievousness = round(mischiefs[index] * 1000 / test_count) / 10
         print(image_info['file'] + ": " + str(mischievousness) + "% mischievous")
-        if mischiefs[index] > test_count/2:
-            os.system("say 'Mischief detected, " + str(mischievousness) + "% confidence.'")
+        if mischiefs[index] > test_count / 10:  # mischief threshhold is currently 1/10, or 10%
+            os.system("say 'Mischief detected, " + str(mischievousness) + "%.'")
             os.system("cp " + SCREENCAP_DIR + image_info['file'] + " " + "savedcaps/$(date +%s)_" + str(index) + "_" + str(mischiefs[index]) + ".png")
         else:
-            os.system("say 'No mischief detected, " + str(100.0 - mischievousness) + "% confidence.'")
+            os.system("say 'No mischief detected.'")
 
 
     os.system("rm -f " + SCREENCAP_DIR + "subfolder/cap*.png")
