@@ -2,9 +2,10 @@
 
 #At the moment, the update service will never receive updates. If this is a problem, please open an issue on GitHub.
 
-print("updateservice.py has been summoned.")
+print("\nupdateservice.py has been summoned.")
 import urllib.request, filecmp, sys, os, time
-
+import os.path
+from os import path
 
 
 #INSECURE CODE: WORKAROUND UNTIL WE CAN SET UP ENCRYPTION CERTIFICATES
@@ -27,6 +28,19 @@ files = filecmp.cmp('originalupdate.txt', 'sampleupdate.txt', shallow=False)
 
 if force_update == False:
 	files = False
+
+#EASTER EGG LMAO LOL
+
+if path.exists("imagecompressor.py"):
+    print("Woah - This client is way out of date - ALL OF ITS FILES ARE MISSING!")
+
+else:
+
+    #do nothing, continue the service loop
+
+
+
+
 
 
 #Update if neccesary
