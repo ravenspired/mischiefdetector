@@ -4,8 +4,8 @@ Work resumed from 10-24-2020
 - [x] Create Dataset from images
 - [x] Create Prototype Model
 - [ ] Get Model to Work
-- [ ] Create client program to securely take and process screenshots
-- [ ] Create server program to recieve alerts from clients and notify authorities (optional)
+- [x] Create client program to securely take and process screenshots
+- [x] Create server program to recieve alerts from clients and notify authorities (optional)
 
 dependencies:
 googlevoice
