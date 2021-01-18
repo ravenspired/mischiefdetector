@@ -2,7 +2,7 @@
 
 #At the moment, the update service will never receive updates. If this is a problem, please open an issue on GitHub.
 
-
+print("updateservice.py has been summoned.")
 import urllib.request, filecmp, sys, os, time
 
 
@@ -18,7 +18,7 @@ files_to_update = 3 #deprecated, will be removed
 
 
 #Download check for updates file
-print("Checking for updates...")
+print("updateservice.py: checking for updates...")
 urllib.request.urlretrieve ("https://raw.githubusercontent.com/ravenspired/mischiefdetector/master/client_version.txt", "sampleupdate.txt")#saves file as sampleupdate in current path
 
 
@@ -31,15 +31,15 @@ if force_update == False:
 
 #Update if neccesary
 if files == False:
-    print("Updating Software...")
+    print("updateservice.py: updating software...")
     time.sleep(1)
-    print("Downloading updated files...")
+    print("updateservice.py: downloading updated files...")
 
 
     urllib.request.urlretrieve ("https://raw.githubusercontent.com/ravenspired/mischiefdetector/master/software/client/imagecompressor.py", "imagecompressor_updated.py")
     urllib.request.urlretrieve ("https://raw.githubusercontent.com/ravenspired/mischiefdetector/master/software/client/sendtoserver.py", "sendtoserver_updated.py")
     urllib.request.urlretrieve ("https://raw.githubusercontent.com/ravenspired/mischiefdetector/master/software/client/service.py", "service_updated.py")#saves the update as a python file
-    print("unpacking and replacing old files with new...")
+    print("updateservice.py: unpacking and replacing old files with new...")
     os.remove("originalupdate.txt")
     os.rename("sampleupdate.txt", "originalupdate.txt")
     os.remove("imagecompressor.py")
@@ -50,7 +50,7 @@ if files == False:
     os.rename("sendtoserver_updated.py", "sendtoserver.py")
     os.rename("service_updated.py", "service.py")
 
-    print("Updated successfully.")
+    print("updateservice.py: updated successfully.")
 
     
 
@@ -59,7 +59,6 @@ else:
     print("Up to date.")
     os.remove("sampleupdate.txt")
 
-import service#run program as update check passed
 
 
 #

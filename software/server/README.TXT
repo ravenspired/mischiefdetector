@@ -1,0 +1,1 @@
+#The server files are deprecated. The server service will not be used and an email client will be used to detect malicious computer use instead.

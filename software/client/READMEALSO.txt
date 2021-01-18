@@ -1,0 +1,1 @@
+#tasks: make sure the image that is detected as malicious is renamed to "offending_screenshot.png" and placed in the mischief directory in order to be sent to authorities.
