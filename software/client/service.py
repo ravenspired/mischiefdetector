@@ -1,7 +1,8 @@
 #This is the main program that facilitates running the others. In other words, the logic loop.
 
 
-import updateservice.py
+import updateservice
+
 #Program loop
 while True:
 
