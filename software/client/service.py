@@ -11,4 +11,4 @@ while True:
 	import sendtoserver
 
 
-#program cannot be killed by student
+#program should be run as root to avoid students killing it
