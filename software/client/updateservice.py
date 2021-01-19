@@ -36,7 +36,7 @@ if path.exists("imagecompressor.py"):
 
 else:
 
-    #do nothing, continue the service loop
+    #do nothing, continue the service loop 
 
 
 
@@ -44,7 +44,7 @@ else:
 
 
 #Update if neccesary
-if files == False:
+if !files:
     print("updateservice.py: updating software...")
     time.sleep(1)
     print("updateservice.py: downloading updated files...")
