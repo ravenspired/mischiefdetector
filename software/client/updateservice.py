@@ -45,7 +45,7 @@ else:
 
 
 #Update if neccesary
-if !files:
+if files == False:
     print("updateservice.py: updating software...")
     time.sleep(1)
     print("updateservice.py: downloading updated files...")
