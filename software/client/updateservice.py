@@ -35,6 +35,7 @@ if path.exists("imagecompressor.py"):
     print("Woah - This client is way out of date - ALL OF ITS FILES ARE MISSING!")
 
 else:
+    print("\n")
 
     #do nothing, continue the service loop 
 
