@@ -3,9 +3,9 @@ Work resumed from 10-24-2020
 - [x] Ponder the meaning of life
 - [x] Create Dataset from images
 - [x] Create Prototype Model
-- [ ] Get Model to Work
+- [x] Get Model to Work
 - [x] Create client program to securely take and process screenshots
-- [x] Create server program to recieve alerts from clients and notify authorities (optional)
+- [ ] Integrate client program and the AI
 
 dependencies:
 googlevoice
