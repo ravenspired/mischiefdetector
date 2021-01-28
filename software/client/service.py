@@ -6,7 +6,7 @@ import updateservice
 #Program loop
 while True:
 
-	import imagecompressor
+	import imagecapture
 	import fakeai.py #or ai.py, you decide
 	import sendtoserver
 

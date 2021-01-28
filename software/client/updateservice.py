@@ -31,7 +31,7 @@ if force_update == False:
 
 #EASTER EGG LMAO LOL
 
-if path.exists("imagecompressor.py"):
+if path.exists("imagecapture.py"):
     print("Woah - This client is way out of date - ALL OF ITS FILES ARE MISSING!")
 
 else:
@@ -51,17 +51,17 @@ if files == False:
     print("updateservice.py: downloading updated files...")
 
 
-    urllib.request.urlretrieve ("https://raw.githubusercontent.com/ravenspired/mischiefdetector/master/software/client/imagecompressor.py", "imagecompressor_updated.py")
+    urllib.request.urlretrieve ("https://raw.githubusercontent.com/ravenspired/mischiefdetector/master/software/client/imagecapture.py", "imagecapture_updated.py")
     urllib.request.urlretrieve ("https://raw.githubusercontent.com/ravenspired/mischiefdetector/master/software/client/sendtoserver.py", "sendtoserver_updated.py")
     urllib.request.urlretrieve ("https://raw.githubusercontent.com/ravenspired/mischiefdetector/master/software/client/service.py", "service_updated.py")#saves the update as a python file
     print("updateservice.py: unpacking and replacing old files with new...")
     os.remove("originalupdate.txt")
     os.rename("sampleupdate.txt", "originalupdate.txt")
-    os.remove("imagecompressor.py")
+    os.remove("imagecapture.py")
     os.remove("sendtoserver.py")
     os.remove("service.py")
     time.sleep(5)
-    os.rename("imagecompressor_updated.py", "imagecompressor.py")
+    os.rename("imagecapture_updated.py", "imagecapture.py")
     os.rename("sendtoserver_updated.py", "sendtoserver.py")
     os.rename("service_updated.py", "service.py")
 

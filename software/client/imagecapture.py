@@ -1,9 +1,7 @@
-#AI image analysis is not ready yet
-print("\n imagecompressor.py has been summoned.")
+print("\nimagecapture.py has been summoned.")
 
 import os
 import datetime
-from PIL import Image
 import os.path
 homedir = os.path.expanduser("~")
 
@@ -17,14 +15,12 @@ savetofile = savetofile + ".png"
 
 print(savetofile)
 os.system("screencapture "+savetofile+" -mx")
-print("imagecompressor.py: file saved successfully. Compressing...")
+print("imagecapture.py: file saved successfully.")
 
 
-foo = Image.open(savetofile)
-print(foo.size)
-foo = foo.resize((256,144),Image.ANTIALIAS)
-foo.save(savetofile,quality=95)
+# foo = Image.open(savetofile)
+# print(foo.size)
+# foo = foo.resize((256,144),Image.ANTIALIAS)
+# foo.save(savetofile,quality=95)
 
-print("imagecompressor.py: image compressed, ready for analysis.")
-
-
+# print("imagecapture.py: image compressed, ready for analysis.")
