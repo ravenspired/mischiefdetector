@@ -5,17 +5,18 @@ import datetime
 import os.path
 homedir = os.path.expanduser("~")
 
-print(homedir)
-savetofile = homedir+"/mischief_detector/temp/screenshots/"+str(datetime.datetime.now())
-savetofile= savetofile.replace(" ", "_")
-savetofile= savetofile.replace(":", "_")
-savetofile = savetofile.replace(".","_")
-savetofile = savetofile + ".png"
+def take_screenshot(SCREENCAP_DIR):
+    print(homedir)
+    savetofile = homedir+"/mischief_detector/"+SCREENCAP_DIR+"screenshots/"str(datetime.datetime.now())
+    savetofile= savetofile.replace(" ", "_")
+    savetofile= savetofile.replace(":", "_")
+    savetofile = savetofile.replace(".","_")
+    savetofile = savetofile + ".png"
 
 
-print(savetofile)
-os.system("screencapture "+savetofile+" -mx")
-print("imagecapture.py: file saved successfully.")
+    print(savetofile)
+    os.system("screencapture "+savetofile+" -mx")
+    print("imagecapture.py: file saved successfully.")
 
 
 # foo = Image.open(savetofile)

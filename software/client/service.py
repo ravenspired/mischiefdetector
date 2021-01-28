@@ -2,13 +2,18 @@
 
 
 import updateservice
+import imagecapture
+import ai
+import sendtoserver
+
+SCREENCAP_DIR = "temp/"
 
 #Program loop
 while True:
+    imagecapture.take_screenshot()
+    detector.test_screenshot()
+    sendtoserver.report_any_mischief()
 
-	import imagecapture
-	import fakeai.py #or ai.py, you decide
-	import sendtoserver
 
 
 #program should be run as root to avoid students killing it
