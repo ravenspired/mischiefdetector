@@ -14,7 +14,7 @@ mischief.load_from_checkpt()
 mischief.compile_network()
 
 
-def test_screenshot(SCREENCAP_DIR, test_count=16, threshold=0.1):
+def test_screenshot(SCREENCAP_DIR, test_count=32, threshold=0.05):
     mischiefs = []
 
     for i in range(1, test_count):
