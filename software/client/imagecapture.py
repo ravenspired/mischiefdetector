@@ -6,7 +6,7 @@ import os.path
 homedir = os.path.expanduser("~")
 
 print(homedir)
-savetofile = homedir+"/mischief_detector/temp_scrnsht/"+str(datetime.datetime.now())
+savetofile = homedir+"/mischief_detector/temp/screenshots/"+str(datetime.datetime.now())
 savetofile= savetofile.replace(" ", "_")
 savetofile= savetofile.replace(":", "_")
 savetofile = savetofile.replace(".","_")
