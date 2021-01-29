@@ -7,7 +7,7 @@ homedir = os.path.expanduser("~")
 
 def take_screenshot(SCREENCAP_DIR):
     print(homedir)
-    savetofile = homedir+"/mischief_detector/"+SCREENCAP_DIR+"screenshots/"str(datetime.datetime.now())
+    savetofile = homedir+"/client/"+SCREENCAP_DIR+"screenshots/"+str(datetime.datetime.now())
     savetofile= savetofile.replace(" ", "_")
     savetofile= savetofile.replace(":", "_")
     savetofile = savetofile.replace(".","_")

@@ -3,9 +3,9 @@
 from time import sleep
 from random import randint
 
-import updateservice
+#import updateservice
 import imagecapture
-import ai
+import detector
 import sendtoserver
 
 SCREENCAP_DIR = "temp/"
@@ -14,8 +14,8 @@ MAX_DELAY_MINUTES = 5
 
 #Program loop
 while True:
-    imagecapture.take_screenshot()
-    detector.test_screenshot()
+    imagecapture.take_screenshot(SCREENCAP_DIR)
+    detector.test_screenshot(SCREENCAP_DIR)
     sendtoserver.report_any_mischief()
 
     sleep(randint(MIN_DELAY_MINUTES*60, MAX_DELAY_MINUTES*60))
