@@ -1,11 +1,17 @@
 # The Mischief Detector
+
+# Warning: This Project is Suspended Until Further Notice. 
+No updates will be released until further notice. Thank you to everyone for contributing.
+
+
+
 Work resumed from 10-24-2020
 - [x] Ponder the meaning of life
 - [x] Create Dataset from images
 - [x] Create Prototype Model
 - [x] Get Model to Work
 - [x] Create client program to securely take and process screenshots
-- [ ] Integrate client program and the AI
+- [x] Integrate client program and the AI
 
 dependencies:
 googlevoice
